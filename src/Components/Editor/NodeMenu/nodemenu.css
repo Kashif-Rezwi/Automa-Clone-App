@@ -1,0 +1,21 @@
+.node-menu {
+  width: 200px;
+  padding: 10px;
+  background: white;
+  border-style: solid;
+  box-shadow: 10px 19px 20px rgba(0, 0, 0, 10%);
+  position: absolute;
+  z-index: 10;
+}
+
+.node-menu button {
+  border: none;
+  display: block;
+  padding: 0.5em;
+  text-align: left;
+  width: 100%;
+}
+
+.node-menu button:hover {
+  background: white;
+}
