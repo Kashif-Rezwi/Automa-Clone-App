@@ -3,17 +3,19 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 64px auto;
+  background-color: #27272a;
 }
 
 .editor-tab > div:first-child {
   width: 100%;
-  height: 24px;
-  border: 1px solid green;
+  height: 40px;
+  background-color: #18181b;
+  border-bottom: 1px solid #333338;
 }
 
 .editor-tab > div:last-child {
   width: 100%;
-  height: calc(100% - 24px);
+  height: calc(100% - 40px);
   display: grid;
   grid-template-columns: 320px auto;
 }

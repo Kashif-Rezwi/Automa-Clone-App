@@ -59,12 +59,12 @@ function Menubar() {
       <div>
         <div className="option">
           <IconButton disableTouchRipple>
-            <AiOutlineInfoCircle />
+            <HiOutlineUsers />
           </IconButton>
         </div>
         <div className="option">
           <IconButton disableTouchRipple>
-            <HiOutlineUsers />
+            <AiOutlineInfoCircle />
           </IconButton>
         </div>
       </div>

@@ -3,7 +3,7 @@ import Editor from "../../Components/Editor/Editor";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./home.css";
 import { ReactFlowProvider } from "reactflow";
-import Nodebar from "../../Components/Sidebar/Nodebar/Nodebar";
+import Nodebar from "../../Components/Editor/Nodebar/Nodebar";
 
 function Home() {
   return (

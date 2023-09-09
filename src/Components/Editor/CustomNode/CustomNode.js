@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import "./customnode.css";
 import { Handle, NodeToolbar } from "reactflow";
 import { RxLightningBolt } from "react-icons/rx";
@@ -17,37 +17,59 @@ const icons = {
 };
 
 const CustomNode = ({ id, selected, type, data, ...rest }) => {
-  const { label, nodeType, description, Icon, bgColor } = data;
+  const { label, nodeType, description, Icon, color, reactFlowInstance, ref } =
+    data;
 
   const [isVisible, setIsVisible] = useState(false);
 
-  //   console.log({ id, selected, type, nodeType, data, ...rest });
+  //   const centerSelectedNode = useCallback(() => {
+  //     if (reactFlowInstance) {
+  //       // Get the selected node
+  //       const selectedNode = reactFlowInstance
+  //         .getNodes()
+  //         .find((element) => element.selected);
+
+  //       if (selectedNode) {
+  //         // Calculate the position to center the node
+  //         const editor = ref.current.getBoundingClientRect();
+  //         const { left, right, top, bottom } = editor;
+  //         const panX = (right - left) / 2;
+  //         const panY = (bottom - top) / 2;
+
+  //         const { x, y, width, height } = selectedNode.position;
+  //         const centerX = panX - width / 2;
+  //         const centerY = panY - height / 2;
+  //         reactFlowInstance.fitView({ x: centerX, y: centerY, zoom: 1 });
+  //       }
+  //     }
+  //   }, []);
+
   return (
     <>
-      {nodeType === "default" && <Handle type="source" position="top" />}
+      {nodeType === "default" && (
+        <Handle className="edge-handle top" type="source" position="top" />
+      )}
 
-      <NodeToolbar isVisible={isVisible}>
-        <div
-          className="toolbar-wrapper"
-          onMouseEnter={() => setIsVisible(true)}
-          onMouseLeave={() => setIsVisible(false)}
-        >
-          <p>{id}</p>
-          <div>
-            <AiOutlineDelete
-              onClick={() => console.log({ Status: "Delete" })}
-            />
-            <BiPencil onClick={() => console.log({ Status: "Edit" })} />
-          </div>
+      <div
+        className="toolbar-wrapper"
+        style={{ display: isVisible ? "flex" : "none" }}
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+      >
+        <p>{id}</p>
+        <div>
+          <AiOutlineDelete onClick={() => console.log({ Status: "Delete" })} />
+          <BiPencil onClick={() => console.log({ Status: "Edit" })} />
         </div>
-      </NodeToolbar>
+      </div>
 
       <div
         onMouseEnter={() => setIsVisible(true)}
         onMouseLeave={() => setIsVisible(false)}
         className={`custom-node-wrapper ${selected ? "selected" : ""}`}
+        // onClick={centerSelectedNode}
       >
-        <div style={{ backgroundColor: bgColor }}>{icons[Icon]}</div>
+        <div style={{ backgroundColor: color }}>{icons[Icon]}</div>
         <div>
           <p>{stringReducer(label, 15)}</p>
           <p>{stringReducer(description, 16)}</p>
@@ -55,7 +77,7 @@ const CustomNode = ({ id, selected, type, data, ...rest }) => {
       </div>
 
       {(nodeType === "default" || nodeType === "input") && (
-        <Handle type="target" position="bottom" />
+        <Handle className="edge-handle" type="target" position="bottom" />
       )}
     </>
   );

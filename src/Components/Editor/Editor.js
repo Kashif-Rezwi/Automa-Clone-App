@@ -7,10 +7,10 @@ import ReactFlow, {
   MiniMap,
   Background,
 } from "reactflow";
-import NodeMenu from "./NodeMenu/NodeMenu";
 import "./editor.css";
 import CustomNode from "./CustomNode/CustomNode";
 import uniqueId from "../../utils/uniqueId";
+import ContextMenu from "./ContextMenu/ContextMenu";
 
 function Editor() {
   const reactFlowWrapper = useRef(null);
@@ -21,8 +21,11 @@ function Editor() {
   const ref = useRef(null);
 
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    []
+    (params) => {
+      params.type = "smoothstep";
+      setEdges((eds) => addEdge(params, eds));
+    },
+    [edges]
   );
 
   const onDragOver = useCallback((event) => {
@@ -36,7 +39,7 @@ function Editor() {
 
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const data = event.dataTransfer.getData("application/reactflow");
-      const { type, label, Icon, bgColor } = JSON.parse(data);
+      const { type, label, Icon, color } = JSON.parse(data);
 
       // check if the dropped element is valid
       if (typeof type === "undefined" || !type) {
@@ -57,7 +60,9 @@ function Editor() {
           nodeType: type,
           description: "Hello guys, how are you ?",
           Icon,
-          bgColor,
+          color,
+          reactFlowInstance,
+          ref,
         },
       };
 
@@ -66,7 +71,7 @@ function Editor() {
     [reactFlowInstance]
   );
 
-  const onNodeContextMenu = useCallback(
+  const handleContextMenu = useCallback(
     (event, node) => {
       // Prevent native context menu from showing
       event.preventDefault();
@@ -76,14 +81,14 @@ function Editor() {
 
       setMenu({
         id: node.id,
-        top: event.clientY < pane.height - 200 && event.clientY - (24 - 10),
+        top: event.clientY < pane.height - 200 && event.clientY - (40 - 10),
         left: event.clientX < pane.width - 200 && event.clientX - (384 + 100),
         right:
           event.clientX >= pane.width - 200 &&
           pane.width - event.clientX + (384 - 100),
         bottom:
           event.clientY >= pane.height - 200 &&
-          pane.height - event.clientY + (24 + 10),
+          pane.height - event.clientY + (40 + 10),
       });
     },
     [menu]
@@ -93,6 +98,10 @@ function Editor() {
   const onPaneClick = useCallback(() => setMenu(null), [menu]);
 
   const nodeTypes = useMemo(() => ({ custom: CustomNode }), []);
+
+  const nodeColor = (node) => {
+    return node.data.color;
+  };
 
   return (
     <section className="editor-wrapper" ref={reactFlowWrapper}>
@@ -108,14 +117,15 @@ function Editor() {
         onDrop={onDrop}
         onDragOver={onDragOver}
         onPaneClick={onPaneClick}
-        onNodeContextMenu={onNodeContextMenu}
+        onNodeContextMenu={handleContextMenu}
+        onEdgeContextMenu={handleContextMenu}
         minZoom={0.3}
         maxZoom={1.2}
       >
-        <Background variant="dots" />
+        <Background variant="dots" className="editor-bg" />
         <Controls />
-        <MiniMap />
-        {menu && <NodeMenu onClick={onPaneClick} {...menu} />}
+        <MiniMap nodeColor={nodeColor} className="mini-map" />
+        {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
       </ReactFlow>
     </section>
   );

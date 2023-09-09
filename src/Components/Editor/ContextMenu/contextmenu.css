@@ -1,4 +1,4 @@
-.node-menu {
+.context-menu {
   width: 200px;
   padding: 10px;
   background: white;
@@ -8,7 +8,7 @@
   z-index: 10;
 }
 
-.node-menu button {
+.context-menu button {
   border: none;
   display: block;
   padding: 0.5em;
@@ -16,6 +16,6 @@
   width: 100%;
 }
 
-.node-menu button:hover {
+.context-menu button:hover {
   background: white;
 }

@@ -1,7 +1,7 @@
 .menu-wrapper {
   width: 100%;
   height: 100%;
-  border: 1px solid green;
+  border-right: 1px solid #333338;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,7 +24,7 @@
 
 .menu-wrapper > div > div > button > svg {
   font-size: 20px;
-  /* color: white; */
+  color: white;
 }
 
 .menu-wrapper > div > div > button {

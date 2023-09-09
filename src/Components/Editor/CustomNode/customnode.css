@@ -11,7 +11,7 @@
 }
 
 .custom-node-wrapper.selected {
-  border: 3px solid red;
+  border: 3px solid #f1f1e5;
 }
 
 .custom-node-wrapper > div:first-child {
@@ -40,10 +40,10 @@
 }
 
 .toolbar-wrapper {
-  position: relative;
-  top: 10px;
+  position: absolute;
+  bottom: 75px;
   padding: 5px 0px;
-  width: 252px;
+  width: 210px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,17 +51,16 @@
 
 .toolbar-wrapper > p {
   cursor: default;
-  background-color: #27272a55;
+  background-color: #3a3a3d6f;
   border-radius: 5px;
   padding: 5px 10px;
   transition: 0.3s;
   border-radius: 5px;
-  font-size: 20px;
   color: #f1f1e5;
 }
 
 .toolbar-wrapper > div {
-  background-color: #27272a55;
+  background-color: #3a3a3d6f;
   padding: 5px 10px;
   display: flex;
   justify-content: flex-end;
@@ -73,8 +72,8 @@
 
 .toolbar-wrapper > div > svg {
   cursor: pointer;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   color: #f1f1e5;
   transition: 0.3s;
 }
@@ -82,4 +81,13 @@
 .toolbar-wrapper > div > svg:hover {
   color: cornflowerblue;
   transition: 0.3s;
+}
+
+.edge-handle {
+  width: 10px;
+  height: 10px;
+}
+
+.top {
+  background-color: white;
 }
