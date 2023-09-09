@@ -1,0 +1,85 @@
+.custom-node-wrapper {
+  width: 210px;
+  background-color: #27272a;
+  padding: 16px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+}
+
+.custom-node-wrapper.selected {
+  border: 3px solid red;
+}
+
+.custom-node-wrapper > div:first-child {
+  padding: 8px;
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: black;
+}
+
+.custom-node-wrapper > div:first-child > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.custom-node-wrapper > div:last-child > p:first-child {
+  font-weight: 500;
+  color: #f1f1e5;
+}
+
+.custom-node-wrapper > div:last-child > p:last-child {
+  font-weight: 400;
+  color: #e4e4cf;
+}
+
+.toolbar-wrapper {
+  position: relative;
+  top: 10px;
+  padding: 5px 0px;
+  width: 252px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-wrapper > p {
+  cursor: default;
+  background-color: #27272a55;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: 0.3s;
+  border-radius: 5px;
+  font-size: 20px;
+  color: #f1f1e5;
+}
+
+.toolbar-wrapper > div {
+  background-color: #27272a55;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  border-radius: 5px;
+}
+
+.toolbar-wrapper > div > svg {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  color: #f1f1e5;
+  transition: 0.3s;
+}
+
+.toolbar-wrapper > div > svg:hover {
+  color: cornflowerblue;
+  transition: 0.3s;
+}

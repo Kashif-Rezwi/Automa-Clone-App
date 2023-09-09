@@ -1,8 +1,17 @@
 import React from "react";
 
 function Nodebar() {
-  const onDragStart = (event, nodeType) => {
-    event.dataTransfer.setData("application/reactflow", nodeType);
+  const onDragStart = (event, type, label, Icon, bgColor) => {
+    const dragData = {
+      type,
+      label,
+      Icon,
+      bgColor,
+    };
+    event.dataTransfer.setData(
+      "application/reactflow",
+      JSON.stringify(dragData)
+    );
     event.dataTransfer.effectAllowed = "move";
   };
 
@@ -13,24 +22,60 @@ function Nodebar() {
       </div>
       <div
         className="node input"
-        onDragStart={(event) => onDragStart(event, "input")}
+        onDragStart={(event) =>
+          onDragStart(event, "input", "Trigger", "RxLightningBolt", "#fde047")
+        }
         draggable
       >
-        Input Node
+        Trigger
       </div>
       <div
         className="node"
-        onDragStart={(event) => onDragStart(event, "default")}
+        onDragStart={(event) =>
+          onDragStart(
+            event,
+            "default",
+            "New Window",
+            "RiWindow2Line",
+            "#fdba74"
+          )
+        }
         draggable
       >
-        Default Node
+        New Window
       </div>
       <div
-        className="node output"
-        onDragStart={(event) => onDragStart(event, "output")}
+        className="node"
+        onDragStart={(event) =>
+          onDragStart(event, "default", "Take Screenshot", "TbPhoto", "#fcb974")
+        }
         draggable
       >
-        Output Node
+        Take Screenshot
+      </div>
+      <div
+        className="node"
+        onDragStart={(event) =>
+          onDragStart(
+            event,
+            "default",
+            "Click Element",
+            "RiCursorLine",
+            "#85eeab"
+          )
+        }
+        draggable
+      >
+        Click Element
+      </div>
+      <div
+        className="node"
+        onDragStart={(event) =>
+          onDragStart(event, "default", "Get Text", "RiParagraph", "#85eeab")
+        }
+        draggable
+      >
+        Get Text
       </div>
     </aside>
   );

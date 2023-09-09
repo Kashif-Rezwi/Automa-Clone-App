@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useMemo } from "react";
 import ReactFlow, {
   addEdge,
   useNodesState,
@@ -9,6 +9,8 @@ import ReactFlow, {
 } from "reactflow";
 import NodeMenu from "./NodeMenu/NodeMenu";
 import "./editor.css";
+import CustomNode from "./CustomNode/CustomNode";
+import uniqueId from "../../utils/uniqueId";
 
 function Editor() {
   const reactFlowWrapper = useRef(null);
@@ -33,7 +35,8 @@ function Editor() {
       event.preventDefault();
 
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-      const type = event.dataTransfer.getData("application/reactflow");
+      const data = event.dataTransfer.getData("application/reactflow");
+      const { type, label, Icon, bgColor } = JSON.parse(data);
 
       // check if the dropped element is valid
       if (typeof type === "undefined" || !type) {
@@ -45,12 +48,17 @@ function Editor() {
         y: event.clientY - reactFlowBounds.top,
       });
 
-      const id = `${Date.now()}`;
       const newNode = {
-        id,
-        type,
+        id: uniqueId(7),
+        type: "custom",
         position,
-        data: { label: `${type} node` },
+        data: {
+          label,
+          nodeType: type,
+          description: "Hello guys, how are you ?",
+          Icon,
+          bgColor,
+        },
       };
 
       setNodes((nds) => nds.concat(newNode));
@@ -63,10 +71,9 @@ function Editor() {
       // Prevent native context menu from showing
       event.preventDefault();
 
-      // Calculate position of the context menu. We want to make sure it
-      // doesn't get positioned off-screen.
+      // Calculate position of the node context menu. We want to make sure it doesn't get positioned off-screen.
       const pane = ref.current.getBoundingClientRect();
-      console.log({ pane, event });
+
       setMenu({
         id: node.id,
         top: event.clientY < pane.height - 200 && event.clientY - (24 - 10),
@@ -79,17 +86,20 @@ function Editor() {
           pane.height - event.clientY + (24 + 10),
       });
     },
-    [setMenu]
+    [menu]
   );
 
-  // Close the context menu if it's open whenever the window is clicked.
-  const onPaneClick = useCallback(() => setMenu(null), [setMenu]);
+  // Close the node context menu if it's open whenever the window is clicked.
+  const onPaneClick = useCallback(() => setMenu(null), [menu]);
+
+  const nodeTypes = useMemo(() => ({ custom: CustomNode }), []);
 
   return (
     <section className="editor-wrapper" ref={reactFlowWrapper}>
       <ReactFlow
         ref={ref}
         nodes={nodes}
+        nodeTypes={nodeTypes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
@@ -99,7 +109,8 @@ function Editor() {
         onDragOver={onDragOver}
         onPaneClick={onPaneClick}
         onNodeContextMenu={onNodeContextMenu}
-        fitView
+        minZoom={0.3}
+        maxZoom={1.2}
       >
         <Background variant="dots" />
         <Controls />

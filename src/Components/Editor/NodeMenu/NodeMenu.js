@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { useReactFlow } from "reactflow";
 import "./nodemenu.css";
+import uniqueId from "../../../utils/uniqueId";
 
 function NodeMenu({ id, top, left, right, bottom, ...props }) {
   const { getNode, setNodes, addNodes, setEdges } = useReactFlow();
@@ -11,7 +12,7 @@ function NodeMenu({ id, top, left, right, bottom, ...props }) {
       y: node.position.y + 50,
     };
 
-    addNodes({ ...node, id: Date.now(), position });
+    addNodes({ ...node, id: uniqueId(7), position });
   }, [id, getNode, addNodes]);
 
   const deleteNode = useCallback(() => {
