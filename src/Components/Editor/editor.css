@@ -7,6 +7,74 @@
   background-color: #18181b;
 }
 
+.controls {
+  width: 390px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3px;
+}
+
+.controls > button {
+  background-color: #3a3a3d6f;
+  border-bottom: none;
+  padding: 10px;
+}
+
+.controls > button > svg {
+  fill: white;
+}
+
+.controls > button:hover {
+  background-color: #3a3a3d6f;
+}
+
+/* interactive Positioned as 1st element */
+.react-flow__controls-interactive {
+  order: 1;
+  border-radius: 5px;
+}
+
+/* FitView Positioned as 2nd element */
+.react-flow__controls-fitview {
+  order: 2;
+  margin: 0px 10px;
+  border-radius: 5px;
+}
+
+/* Zoom Out button Positioned as 2nd last element */
+.react-flow__controls-zoomout {
+  order: 3;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* Zoom In button Positioned as last element */
+.react-flow__controls-zoomin {
+  order: 4;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .mini-map {
+  width: min-content;
+  height: min-content;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   background-color: #27272a;
+}
+
+/* remove reactflow watermark */
+.react-flow__attribution {
+  display: none;
+}
+
+@media all and (max-width: 500px) {
+  .mini-map {
+    display: none;
+  }
+  .controls {
+    width: min-content;
+  }
 }

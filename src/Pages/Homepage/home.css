@@ -6,16 +6,54 @@
   background-color: #27272a;
 }
 
-.editor-tab > div:first-child {
+.editor-header {
   width: 100%;
   height: 40px;
   background-color: #18181b;
   border-bottom: 1px solid #333338;
+  display: flex;
+  align-items: center;
+  color: white;
 }
 
-.editor-tab > div:last-child {
+.editor-header > div:first-child {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  background-color: #232326;
+  border-bottom: 3px solid white;
+  padding: 0px 16px;
+}
+
+.editor-header > div:first-child > p {
+  font-weight: 400;
+}
+
+.editor-header > div > svg {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.editor-header > div:last-child {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.editor-tab {
   width: 100%;
   height: calc(100% - 40px);
   display: grid;
   grid-template-columns: 320px auto;
+}
+
+@media all and (max-width: 815px) {
+  .editor-tab {
+    grid-template-columns: 100%;
+  }
 }

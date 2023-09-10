@@ -139,3 +139,9 @@
   width: 18px;
   height: 18px;
 }
+
+@media all and (max-width: 815px) {
+  .nodes-container {
+    display: none;
+  }
+}

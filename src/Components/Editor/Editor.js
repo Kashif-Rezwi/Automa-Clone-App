@@ -123,7 +123,7 @@ function Editor() {
         maxZoom={1.2}
       >
         <Background variant="dots" className="editor-bg" />
-        <Controls />
+        <Controls className="controls" position="bottom-right" />
         <MiniMap nodeColor={nodeColor} className="mini-map" />
         {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
       </ReactFlow>
