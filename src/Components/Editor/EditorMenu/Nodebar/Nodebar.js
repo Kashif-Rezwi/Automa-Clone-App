@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./nodebar.css";
 import { GiEarthAmerica } from "react-icons/gi";
 import NodeComp from "./NodeComp";
 import { RiSearch2Line } from "react-icons/ri";
@@ -39,7 +38,7 @@ function Nodebar() {
   const [isVisible, setIsVisible] = useState(true);
 
   return (
-    <aside className="nodes-container">
+    <>
       <div className="nodes-header">
         <div>
           <GiEarthAmerica />
@@ -67,7 +66,7 @@ function Nodebar() {
           ))}
         </div>
       </div>
-    </aside>
+    </>
   );
 }
 

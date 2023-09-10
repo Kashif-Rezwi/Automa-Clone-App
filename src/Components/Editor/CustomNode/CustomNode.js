@@ -1,16 +1,21 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useContext, useState } from "react";
 import "./customnode.css";
-import { Handle, NodeToolbar } from "reactflow";
+import { Handle, useReactFlow } from "reactflow";
 import { BiPencil } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import stringReducer from "../../../utils/stringReducer";
 import getIcons from "../../../utils/getIcons";
+import { AppContext } from "../../../Context/AppContext";
 
-const CustomNode = ({ id, selected, type, data, ...rest }) => {
+const CustomNode = ({ id }) => {
+  const { setData } = useContext(AppContext);
+  const [isVisible, setIsVisible] = useState(false);
+  const { setNodes, getNodes } = useReactFlow();
+
+  const currentNode = getNodes()?.filter((node) => node.id === id);
+  const { type, data, selected } = currentNode[0];
   const { label, nodeType, description, Icon, color, reactFlowInstance, ref } =
     data;
-
-  const [isVisible, setIsVisible] = useState(false);
 
   //   const centerSelectedNode = useCallback(() => {
   //     if (reactFlowInstance) {
@@ -34,6 +39,11 @@ const CustomNode = ({ id, selected, type, data, ...rest }) => {
   //     }
   //   }, []);
 
+  const deleteNode = useCallback(() => {
+    setNodes((nodes) => nodes.filter((node) => node.id !== id));
+    setData((prev) => ({ ...prev, status: false }));
+  }, []);
+
   return (
     <>
       {nodeType === "default" && (
@@ -48,8 +58,19 @@ const CustomNode = ({ id, selected, type, data, ...rest }) => {
       >
         <p>{id}</p>
         <div>
-          <AiOutlineDelete onClick={() => console.log({ Status: "Delete" })} />
-          <BiPencil onClick={() => console.log({ Status: "Edit" })} />
+          <AiOutlineDelete onClick={deleteNode} />
+          <BiPencil
+            onClick={() =>
+              setData((prev) => ({
+                ...prev,
+                id,
+                selected,
+                type,
+                data,
+                status: true,
+              }))
+            }
+          />
         </div>
       </div>
 

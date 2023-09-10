@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import stringReducer from "../../../utils/stringReducer";
-import getIcons from "../../../utils/getIcons";
+import stringReducer from "../../../../utils/stringReducer";
+import getIcons from "../../../../utils/getIcons";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { VscPinned } from "react-icons/vsc";
 import { IconButton } from "@mui/material";

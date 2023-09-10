@@ -4,8 +4,8 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./home.css";
 import { ReactFlowProvider } from "reactflow";
 import { IoClose } from "react-icons/io5";
-import Nodebar from "../../Components/Editor/Nodebar/Nodebar";
 import { BiPlus } from "react-icons/bi";
+import EditorMenu from "../../Components/Editor/EditorMenu/EditorMenu";
 
 function Home() {
   return (
@@ -23,7 +23,7 @@ function Home() {
         </div>
         <div className="editor-tab">
           <ReactFlowProvider>
-            <Nodebar />
+            <EditorMenu />
             <Editor />
           </ReactFlowProvider>
         </div>

@@ -1,0 +1,58 @@
+.node-navigate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px 25px 0px;
+}
+
+.node-navigate svg {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.node-navigate > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.node-navigate > div > p {
+  font-weight: 500;
+}
+
+.node-editor {
+  /* border: 1px solid red; */
+}
+
+.description {
+  width: 100%;
+}
+
+.description > div {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 8px;
+  transition: 0.2s;
+  padding: 8px 16px;
+  background-color: #313134;
+}
+
+.MuiInputBase-input::-webkit-scrollbar {
+  width: 0px;
+}
+
+.MuiInputBase-input::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.description > div:hover {
+  background-color: #39393d;
+  transition: 0.2s;
+}
+
+.description > div > textarea {
+  color: white;
+}

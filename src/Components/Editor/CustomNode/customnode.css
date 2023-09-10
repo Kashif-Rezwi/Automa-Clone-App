@@ -41,12 +41,13 @@
 
 .toolbar-wrapper {
   position: absolute;
-  bottom: 75px;
-  padding: 5px 0px;
+  bottom: 70px;
+  padding: 8px 0px;
   width: 210px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* border: 1px solid red; */
 }
 
 .toolbar-wrapper > p {

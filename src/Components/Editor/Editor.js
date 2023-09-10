@@ -58,7 +58,7 @@ function Editor() {
         data: {
           label,
           nodeType: type,
-          description: "Hello guys, how are you ?",
+          description: "",
           Icon,
           color,
           reactFlowInstance,

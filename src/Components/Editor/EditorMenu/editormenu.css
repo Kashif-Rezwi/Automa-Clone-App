@@ -1,4 +1,4 @@
-.nodes-container {
+.editor-menu {
   width: 100%;
   height: 100%;
   padding: 20px;
@@ -141,7 +141,7 @@
 }
 
 @media all and (max-width: 815px) {
-  .nodes-container {
+  .editor-menu {
     display: none;
   }
 }
