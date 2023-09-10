@@ -5,18 +5,101 @@
   color: white;
 }
 
-.description {
-  margin-bottom: 10px;
+.nodes-header {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 10px auto;
 }
 
-.nodes-wrapper {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.nodes-header > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   gap: 10px;
 }
 
+.nodes-header > div > svg {
+  width: 28px;
+  height: 28px;
+}
+
+.nodes-header > div:first-child > p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.nodes-header > div:last-child {
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: #313134;
+}
+
+.nodes-header > div:last-child > input {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background-color: #313134;
+  font-size: 16px;
+  color: white;
+}
+
+.nodes-header > div:last-child > input::placeholder {
+  font-size: 16px;
+}
+
+.nodes-content {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nodes-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nodes-type > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.nodes-type > div > svg {
+  color: #fde047;
+  width: 15px;
+  height: 15px;
+}
+
+.nodes-type > button {
+  color: white;
+  padding: 0px;
+}
+
+.nodes-type > button > svg {
+  transition: 0.5s;
+}
+
+.nodes-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  overflow: hidden;
+  max-height: 500px;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.hidden {
+  max-height: 0;
+}
+
 .node {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,4 +108,34 @@
   border-radius: 10px;
   padding: 20px;
   cursor: grab;
+  gap: 8px;
+}
+
+.node > p {
+  width: 100%;
+}
+
+.node > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.node > div {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: default;
+}
+
+.node > div > button {
+  padding: 0px;
+  margin-left: 5px;
+  color: white;
+}
+
+.node > div > button > svg {
+  margin: auto;
+  width: 18px;
+  height: 18px;
 }

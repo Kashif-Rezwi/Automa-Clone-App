@@ -14,7 +14,11 @@
 }
 
 .menu-wrapper .option > button {
-  border-radius: 5px;
+  border-radius: 8px;
+}
+
+.menu-wrapper .option > button:hover {
+  background-color: #313134;
 }
 
 .menu-wrapper > div > div {
@@ -41,4 +45,30 @@
   width: 40px !important;
   height: 40px;
   margin: 0px 12px 16px;
+}
+
+.menu-wrapper > div:first-child > div:last-child > button {
+  width: 45px;
+  height: 45px;
+  border-top: 2px solid #333338;
+  border-radius: 0px;
+}
+
+.menu-wrapper > div:first-child > div:nth-child(2) {
+  border-right: 4px solid white;
+}
+
+.menu-wrapper > div:first-child > div:last-child > button:hover {
+  background-color: transparent;
+}
+
+.menu-wrapper > div:last-child > div > button {
+  width: min-content;
+  height: min-content;
+  padding: 0px;
+  margin-top: 15px;
+}
+
+.menu-wrapper > div:last-child > div > button:hover {
+  background-color: transparent;
 }

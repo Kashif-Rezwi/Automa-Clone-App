@@ -1,20 +1,10 @@
 import { memo, useCallback, useState } from "react";
 import "./customnode.css";
 import { Handle, NodeToolbar } from "reactflow";
-import { RxLightningBolt } from "react-icons/rx";
-import { RiWindow2Line, RiCursorLine, RiParagraph } from "react-icons/ri";
-import { TbPhoto } from "react-icons/tb";
 import { BiPencil } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import stringReducer from "../../../utils/stringReducer";
-
-const icons = {
-  RxLightningBolt: <RxLightningBolt />,
-  RiWindow2Line: <RiWindow2Line />,
-  RiCursorLine: <RiCursorLine />,
-  RiParagraph: <RiParagraph />,
-  TbPhoto: <TbPhoto />,
-};
+import getIcons from "../../../utils/getIcons";
 
 const CustomNode = ({ id, selected, type, data, ...rest }) => {
   const { label, nodeType, description, Icon, color, reactFlowInstance, ref } =
@@ -69,7 +59,7 @@ const CustomNode = ({ id, selected, type, data, ...rest }) => {
         className={`custom-node-wrapper ${selected ? "selected" : ""}`}
         // onClick={centerSelectedNode}
       >
-        <div style={{ backgroundColor: color }}>{icons[Icon]}</div>
+        <div style={{ backgroundColor: color }}>{getIcons(Icon)}</div>
         <div>
           <p>{stringReducer(label, 15)}</p>
           <p>{stringReducer(description, 16)}</p>

@@ -1,94 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import "./nodebar.css";
-import stringReducer from "../../../utils/stringReducer";
+import { GiEarthAmerica } from "react-icons/gi";
+import NodeComp from "./NodeComp";
+import { RiSearch2Line } from "react-icons/ri";
+import { BsFillCircleFill } from "react-icons/bs";
+import { IconButton } from "@mui/material";
+import { BiMinus, BiPlus } from "react-icons/bi";
+
+const nodes = [
+  {
+    title: "Trigger",
+    type: "input",
+    icon: "RxLightningBolt",
+    color: "#fde047",
+  },
+  {
+    title: "New Window",
+    type: "default",
+    icon: "RiWindow2Line",
+    color: "#fdba74",
+  },
+  {
+    title: "Take Screenshot",
+    type: "default",
+    icon: "TbPhoto",
+    color: "#fcb974",
+  },
+  {
+    title: "Click Element",
+    type: "default",
+    icon: "RiCursorLine",
+    color: "#85eeab",
+  },
+  { title: "Get Text", type: "default", icon: "RiParagraph", color: "#85eeab" },
+];
 
 function Nodebar() {
-  const onDragStart = (event, type, label, Icon, color) => {
-    const dragData = {
-      type,
-      label,
-      Icon,
-      color,
-    };
-    event.dataTransfer.setData(
-      "application/reactflow",
-      JSON.stringify(dragData)
-    );
-    event.dataTransfer.effectAllowed = "move";
-  };
+  const [isVisible, setIsVisible] = useState(true);
 
   return (
     <aside className="nodes-container">
-      <div className="description">
-        You can drag these nodes-wrapper to the pane on the right.
+      <div className="nodes-header">
+        <div>
+          <GiEarthAmerica />
+          <p>Testing</p>
+        </div>
+
+        <div>
+          <RiSearch2Line />
+          <input type="text" placeholder="Search... (ctrl+f)" />
+        </div>
       </div>
-      <div className="nodes-wrapper">
-        <div
-          className="node input"
-          onDragStart={(event) =>
-            onDragStart(event, "input", "Trigger", "RxLightningBolt", "#fde047")
-          }
-          draggable
-        >
-          <p>{stringReducer("Trigger", 10)}</p>
+      <div className="nodes-content">
+        <div className="nodes-type">
+          <div>
+            <BsFillCircleFill />
+            <p>General</p>
+          </div>
+          <IconButton disableRipple onClick={() => setIsVisible(!isVisible)}>
+            {!isVisible ? <BiPlus /> : <BiMinus />}
+          </IconButton>
         </div>
-        <div
-          className="node"
-          onDragStart={(event) =>
-            onDragStart(
-              event,
-              "default",
-              "New Window",
-              "RiWindow2Line",
-              "#fdba74"
-            )
-          }
-          draggable
-        >
-          {" "}
-          <p>{stringReducer("New Window", 10)}</p>
-        </div>
-        <div
-          className="node"
-          onDragStart={(event) =>
-            onDragStart(
-              event,
-              "default",
-              "Take Screenshot",
-              "TbPhoto",
-              "#fcb974"
-            )
-          }
-          draggable
-        >
-          {" "}
-          <p>{stringReducer("Take Screenshot", 10)}</p>
-        </div>
-        <div
-          className="node"
-          onDragStart={(event) =>
-            onDragStart(
-              event,
-              "default",
-              "Click Element",
-              "RiCursorLine",
-              "#85eeab"
-            )
-          }
-          draggable
-        >
-          {" "}
-          <p>{stringReducer("Click Element", 10)}</p>
-        </div>
-        <div
-          className="node"
-          onDragStart={(event) =>
-            onDragStart(event, "default", "Get Text", "RiParagraph", "#85eeab")
-          }
-          draggable
-        >
-          {" "}
-          <p>{stringReducer("Get Text", 10)}</p>
+        <div className={`nodes-wrapper ${!isVisible ? "hidden" : ""}`}>
+          {nodes.map((node, idx) => (
+            <NodeComp key={idx} {...node} />
+          ))}
         </div>
       </div>
     </aside>
