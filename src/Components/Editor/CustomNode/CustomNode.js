@@ -8,36 +8,34 @@ import getIcons from "../../../utils/getIcons";
 import { AppContext } from "../../../Context/AppContext";
 
 const CustomNode = ({ id }) => {
-  const { data: nodesData, setData } = useContext(AppContext);
+  const { setData, setShowSidebar, reactFlowInstance } = useContext(AppContext);
   const [isVisible, setIsVisible] = useState(false);
   const { setNodes, getNodes } = useReactFlow();
 
   const currentNode = getNodes()?.filter((node) => node.id === id);
   const { type, data, selected } = currentNode[0];
-  const { label, nodeType, description, Icon, color, reactFlowInstance, ref } =
-    data;
+  const { label, nodeType, description, Icon, color, ref } = data;
 
-  //   const centerSelectedNode = useCallback(() => {
-  //     if (reactFlowInstance) {
-  //       // Get the selected node
-  //       const selectedNode = reactFlowInstance
-  //         .getNodes()
-  //         .find((element) => element.selected);
+  const centerSelectedNode = (elementId, reactFlowInstance) => {
+    console.log({ reactFlowInstance });
+    if (reactFlowInstance) {
+      const element = reactFlowInstance?.getNode(elementId);
 
-  //       if (selectedNode) {
-  //         // Calculate the position to center the node
-  //         const editor = ref.current.getBoundingClientRect();
-  //         const { left, right, top, bottom } = editor;
-  //         const panX = (right - left) / 2;
-  //         const panY = (bottom - top) / 2;
+      if (element) {
+        const { position, width, height } = element;
 
-  //         const { x, y, width, height } = selectedNode.position;
-  //         const centerX = panX - width / 2;
-  //         const centerY = panY - height / 2;
-  //         reactFlowInstance.fitView({ x: centerX, y: centerY, zoom: 1 });
-  //       }
-  //     }
-  //   }, []);
+        // Calculate the center coordinates
+        const centerX = position.x + width / 2;
+        const centerY = position.y + height / 2;
+
+        // Set the center of the graph to the element's position
+        reactFlowInstance.setCenter(centerX, centerY, {
+          duration: 800,
+          zoom: 1,
+        });
+      }
+    }
+  };
 
   const deleteNode = useCallback(() => {
     setNodes((nodes) => nodes.filter((node) => node.id !== id));
@@ -69,27 +67,18 @@ const CustomNode = ({ id }) => {
                 data,
                 status: true,
               }));
-              console.log({ nodesData });
+
+              setShowSidebar(true);
             }}
           />
         </div>
       </div>
 
       <div
-        onClick={() => {
-          console.log({ nodesData });
-          setData((prev) => ({
-            ...prev,
-            id,
-            selected,
-            type,
-            data,
-          }));
-        }}
         onMouseEnter={() => setIsVisible(true)}
         onMouseLeave={() => setIsVisible(false)}
         className={`custom-node-wrapper ${selected ? "selected" : ""}`}
-        // onClick={centerSelectedNode}
+        onClick={() => centerSelectedNode(id, reactFlowInstance)}
       >
         <div style={{ backgroundColor: color }}>{getIcons(Icon)}</div>
         <div>

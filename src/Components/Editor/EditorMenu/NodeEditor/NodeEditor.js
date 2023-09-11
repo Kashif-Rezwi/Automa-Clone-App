@@ -11,7 +11,6 @@ function NodeEditor() {
   const { data: currentNode, setData } = useContext(AppContext);
 
   const updateEditorNode = useCallback((key, value, id) => {
-    console.log({ key, value, id });
     setNodes((nodes) =>
       nodes.map((node) => {
         if (node.id === id) {
@@ -32,8 +31,6 @@ function NodeEditor() {
 
     updateEditorNode(key, value, id);
   };
-
-  //   console.log({ currentNode, AllNodes: getNodes() });
 
   return (
     <>
@@ -84,9 +81,9 @@ function NodeEditor() {
               value={currentNode?.data?.screenshot}
               onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value={"A page"}>A page</MenuItem>
+              <MenuItem value={"A full page"}>A full page</MenuItem>
+              <MenuItem value={"An element"}>An element</MenuItem>
             </Select>
           </div>
         )}

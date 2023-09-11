@@ -54,9 +54,6 @@ export default ContextMenu;
 const NodesMenu = memo(({ id, duplicateNode, deleteNode }) => {
   return (
     <>
-      <p style={{ margin: "0.5em" }}>
-        <small>node: {id}</small>
-      </p>
       <button onClick={duplicateNode}>duplicate</button>
       <button onClick={deleteNode}>delete</button>
     </>

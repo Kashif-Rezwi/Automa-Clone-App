@@ -70,6 +70,76 @@
   display: none;
 }
 
+.react-flow__panel.top.right,
+.react-flow__panel.top.left {
+  background-color: transparent;
+  padding: 10px;
+  cursor: default;
+}
+
+.left-panel-button {
+  width: min-content;
+  background-color: #27272a;
+  gap: 5px;
+  border-radius: 8px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.left-panel-button {
+  justify-content: center;
+  display: flex;
+}
+
+.left-panel-button > button {
+  border-radius: 8px;
+  padding: 10.5px;
+}
+
+.left-panel-button > button:hover {
+  background-color: #313134;
+  transition: 0.2s;
+}
+
+.left-panel-button svg {
+  font-size: 25px;
+  color: white;
+}
+
+.right-panel-button {
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 5px;
+  border-radius: 8px;
+  color: black;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.right-panel-button:hover {
+  background-color: #e0e0e0;
+  transition: 0.2s;
+}
+
+.right-panel-button:active {
+  background-color: #f5f4f4;
+  transition: 0.2s;
+}
+
+.right-panel-button > svg {
+  width: 25px;
+  height: 25px;
+}
+
+.right-panel-button > p {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 5px;
+}
+
 @media all and (max-width: 500px) {
   .mini-map {
     display: none;

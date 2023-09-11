@@ -5,10 +5,15 @@ import NodeEditor from "./NodeEditor/NodeEditor";
 import { AppContext } from "../../../Context/AppContext";
 
 function EditorMenu() {
-  const { data } = useContext(AppContext);
+  const { data, showSidebar, width } = useContext(AppContext);
 
   return (
-    <aside className="editor-menu">
+    <aside
+      className="editor-menu"
+      style={{
+        display: width > "815" && showSidebar ? "block" : "none",
+      }}
+    >
       {data?.status ? <NodeEditor /> : <Nodebar />}
     </aside>
   );

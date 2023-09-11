@@ -95,7 +95,12 @@
   background-color: #313134;
 }
 
-.screenshot > div > ul {
+.css-6hp17o-MuiList-root-MuiMenu-list {
   color: white;
   background-color: #313134;
+  border-radius: 0px;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list li:hover {
+  background-color: #1976d2;
 }
