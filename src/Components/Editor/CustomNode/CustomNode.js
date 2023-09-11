@@ -8,7 +8,7 @@ import getIcons from "../../../utils/getIcons";
 import { AppContext } from "../../../Context/AppContext";
 
 const CustomNode = ({ id }) => {
-  const { setData } = useContext(AppContext);
+  const { data: nodesData, setData } = useContext(AppContext);
   const [isVisible, setIsVisible] = useState(false);
   const { setNodes, getNodes } = useReactFlow();
 
@@ -60,7 +60,7 @@ const CustomNode = ({ id }) => {
         <div>
           <AiOutlineDelete onClick={deleteNode} />
           <BiPencil
-            onClick={() =>
+            onClick={() => {
               setData((prev) => ({
                 ...prev,
                 id,
@@ -68,13 +68,24 @@ const CustomNode = ({ id }) => {
                 type,
                 data,
                 status: true,
-              }))
-            }
+              }));
+              console.log({ nodesData });
+            }}
           />
         </div>
       </div>
 
       <div
+        onClick={() => {
+          console.log({ nodesData });
+          setData((prev) => ({
+            ...prev,
+            id,
+            selected,
+            type,
+            data,
+          }));
+        }}
         onMouseEnter={() => setIsVisible(true)}
         onMouseLeave={() => setIsVisible(false)}
         className={`custom-node-wrapper ${selected ? "selected" : ""}`}

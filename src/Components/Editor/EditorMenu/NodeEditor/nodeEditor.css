@@ -22,10 +22,16 @@
 }
 
 .node-editor {
-  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.description {
+.description,
+.interval,
+.url,
+.screenshot,
+.css-selecter {
   width: 100%;
 }
 
@@ -55,4 +61,41 @@
 
 .description > div > textarea {
   color: white;
+}
+
+.interval > div,
+.url > div,
+.css-selecter > div {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 8px;
+  transition: 0.2s;
+  background-color: #313134;
+}
+
+.screenshot-div {
+  width: 100%;
+}
+
+.screenshot-div > label {
+  position: relative;
+  font-size: 14px;
+  bottom: 3px;
+}
+
+.screenshot > div {
+  width: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 8px;
+  transition: 0.2s;
+  background-color: #313134;
+}
+
+.screenshot > div > ul {
+  color: white;
+  background-color: #313134;
 }
