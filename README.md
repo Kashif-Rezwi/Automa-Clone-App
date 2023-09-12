@@ -2,14 +2,14 @@
 
 ## Project Description
 
-Automa is a browser extension for browser automation. From auto-fill forms, doing a repetitive task, taking a screenshot, to scraping data of the website, it's up to user what they want to do with this extension.
+Automa is a browser extension for browser automation. From auto-fill forms, doing a repetitive task, and taking a screenshot, to scraping data from the website, it's up to users what they want to do with this extension.
 
 | [Table of Contents](#table-of-contents)       |
 | --------------------------------------------- |
 | [Getting Started](#getting-started)           |
 | [Prerequisites](#prerequisites)               |
-| [Instalation](#instalation)                   |
-| [Liabraries and Tools](#liabraries-and-tools) |
+| [Installation](#installation)                   |
+| [Libraries and Tools](#libraries-and-tools) |
 | [Features](#features)                         |
 | [Contribution](#contribution)                 |
 
@@ -25,7 +25,7 @@ Before you begin, ensure you have the following software and tools installed:
 - npm
 - Web browser (e.g., Chrome, Firefox)
 
-### Instalation
+### Installation
 
 Follow these steps to clone the project and install its dependencies:
 
@@ -55,7 +55,7 @@ Follow these steps to clone the project and install its dependencies:
 
    This command will start a development server, and you can access the application in your web browser at http://localhost:3000 (or another port if specified).
 
-### Liabraries and Tools
+### Libraries and Tools
 
 | Library                                                                      | Description                                                                                                                           |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -99,7 +99,7 @@ Follow these steps to clone the project and install its dependencies:
 <img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onRightClickMenu-node.png" />
 
 <h4>Duplicate a node</h4>
-<p>Users can duplicate the node with a different id.</p>
+<p>Users can duplicate the node with a different ID.</p>
 <img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onDuplicate-node.png" />
 
 <h4>Right click on a edge</h4>
@@ -123,9 +123,11 @@ Follow these steps to clone the project and install its dependencies:
 <img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/hide-sidebar.png" />
 
 <h3>Responsiveness</h3>
-<p>The UI is also responsive to Dekstop, tab and mobile screens.</p>
+<p>The UI is also responsive to Dekstop, tab, and mobile screens.</p>
 <img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/responsive-1.png" />
 <img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/responsive-2.png" />
 <img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/responsive-3.png" />
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/responsive-4.png" />
+
 
 ### Contribution
