@@ -8,8 +8,9 @@ Automa is a browser extension for browser automation. From auto-fill forms, doin
 
 1. [Getting Started](#getting-started)
 2. [Prerequisites](#prerequisites)
-3. [Liabraries and Tools](#liabraries-and-tools)
-4. [Features](#features)
+3. [Instalation](#instalation)
+4. [Liabraries and Tools](#liabraries-and-tools)
+5. [Features](#features)
 
 ## Getting Started
 
@@ -22,12 +23,14 @@ List any software, tools, or dependencies that need to be installed before setti
 - Node.js (vXX.XX.X)
 - npm (vX.X.X)
 
-### Liabraries and Tools
+### Instalation
 
 1. Clone the repository to your local machine using Git:
 
    ```bash
    git clone https://github.com/Kashif-Rezwi/Automa-Clone-App.git
    ```
+
+### Liabraries and Tools
 
 ### Features
