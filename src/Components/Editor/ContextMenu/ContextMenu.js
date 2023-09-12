@@ -1,11 +1,13 @@
-import React, { memo, useCallback } from "react";
+import React, { memo, useCallback, useContext } from "react";
 import { useReactFlow } from "reactflow";
-import "./contextmenu.css";
+import "./contextMenu.css";
 import uniqueId from "../../../utils/uniqueId";
 import findEdgeById from "../../../utils/findEdgeById";
+import { AppContext } from "../../../Context/AppContext";
 
 function ContextMenu({ id, top, left, right, bottom, ...props }) {
   const { getNode, setNodes, addNodes, setEdges, getNodes } = useReactFlow();
+  const { setIsUpdated } = useContext(AppContext);
 
   const duplicateNode = useCallback(() => {
     const node = getNode(id);
@@ -37,11 +39,12 @@ function ContextMenu({ id, top, left, right, bottom, ...props }) {
       {...props}
     >
       {findEdgeById(id) ? (
-        <EdgesMenu id={id} setEdges={setEdges} />
+        <EdgesMenu id={id} setEdges={setEdges} setIsUpdated={setIsUpdated} />
       ) : (
         <NodesMenu
           id={id}
           duplicateNode={duplicateNode}
+          setIsUpdated={setIsUpdated}
           deleteNode={deleteNode}
         />
       )}
@@ -51,18 +54,33 @@ function ContextMenu({ id, top, left, right, bottom, ...props }) {
 
 export default ContextMenu;
 
-const NodesMenu = memo(({ id, duplicateNode, deleteNode }) => {
+const NodesMenu = memo(({ id, duplicateNode, deleteNode, setIsUpdated }) => {
   return (
     <>
-      <button onClick={duplicateNode}>duplicate</button>
-      <button onClick={deleteNode}>delete</button>
+      <button
+        onClick={() => {
+          duplicateNode();
+          setIsUpdated(true);
+        }}
+      >
+        duplicate
+      </button>
+      <button
+        onClick={() => {
+          deleteNode();
+          setIsUpdated(true);
+        }}
+      >
+        delete
+      </button>
     </>
   );
 });
 
-const EdgesMenu = memo(({ id, setEdges }) => {
+const EdgesMenu = memo(({ id, setEdges, setIsUpdated }) => {
   const handleDeleteEdge = () => {
     setEdges((prevEdges) => prevEdges.filter((edge) => edge.id !== id));
+    setIsUpdated(true);
   };
 
   return (

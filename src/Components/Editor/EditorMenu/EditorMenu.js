@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import Nodebar from "./Nodebar/Nodebar";
-import "./editormenu.css";
+import "./editorMenu.css";
 import NodeEditor from "./NodeEditor/NodeEditor";
 import { AppContext } from "../../../Context/AppContext";
 

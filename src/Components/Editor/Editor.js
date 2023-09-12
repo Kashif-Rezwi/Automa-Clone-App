@@ -25,6 +25,8 @@ import { IconButton } from "@mui/material";
 import { PiSidebarSimpleFill } from "react-icons/pi";
 import { BiFullscreen } from "react-icons/bi";
 import { AppContext } from "../../Context/AppContext";
+import MenuDrawer from "../Sidebar/MenuDrawer/MenuDrawer";
+import { BsFillCircleFill } from "react-icons/bs";
 
 function Editor() {
   const reactFlowWrapper = useRef(null);
@@ -35,16 +37,23 @@ function Editor() {
   const ref = useRef(null);
 
   const {
+    width,
     showSidebar,
     setShowSidebar,
     reactFlowInstance,
     setReactFlowInstance,
+    showDrawer,
+    setShowDrawer,
+    isUpdated,
+    setIsUpdated,
+    setData,
   } = useContext(AppContext);
 
   const onConnect = useCallback(
     (params) => {
       params.type = "smoothstep";
       setEdges((eds) => addEdge(params, eds));
+      setIsUpdated(true);
     },
     [edges]
   );
@@ -91,6 +100,7 @@ function Editor() {
       };
 
       setNodes((nds) => nds.concat(newNode));
+      setIsUpdated(true);
     },
     [reactFlowInstance]
   );
@@ -100,7 +110,7 @@ function Editor() {
       // Prevent native context menu from showing
       event.preventDefault();
 
-      // Calculate position of the node context menu. We want to make sure it doesn't get positioned off-screen.
+      // Calculate position of the node context menu.
       const pane = ref.current.getBoundingClientRect();
 
       setMenu({
@@ -164,8 +174,18 @@ function Editor() {
         maxZoom={1.2}
       >
         <Background variant="dots" className="editor-bg" />
-        <LeftPanel showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
-        <RightPanel handleWorkflowData={handleWorkflowData} />
+        <LeftPanel
+          showSidebar={showSidebar}
+          setShowSidebar={setShowSidebar}
+          showDrawer={showDrawer}
+          setShowDrawer={setShowDrawer}
+        />
+        <RightPanel
+          handleWorkflowData={handleWorkflowData}
+          isUpdated={isUpdated}
+          setData={setData}
+          setIsUpdated={setIsUpdated}
+        />
         <Controls
           className="controls"
           position="bottom-right"
@@ -173,6 +193,7 @@ function Editor() {
         />
         <MiniMap nodeColor={nodeColor} className="mini-map" />
         {menu && <ContextMenu onClick={onPaneClick} {...menu} />}
+        {width <= "815" && <MenuDrawer />}
       </ReactFlow>
     </section>
   );
@@ -180,13 +201,21 @@ function Editor() {
 
 export default Editor;
 
-const LeftPanel = ({ showSidebar, setShowSidebar }) => {
+const LeftPanel = ({
+  showSidebar,
+  setShowSidebar,
+  showDrawer,
+  setShowDrawer,
+}) => {
   return (
     <Panel position="top-left">
       <div className="left-panel-button">
         <IconButton
           disableTouchRipple
-          onClick={() => setShowSidebar(!showSidebar)}
+          onClick={() => {
+            setShowSidebar(!showSidebar);
+            setShowDrawer(!showDrawer);
+          }}
         >
           {!showSidebar ? <PiSidebarSimpleFill /> : <BiFullscreen />}
         </IconButton>
@@ -195,13 +224,36 @@ const LeftPanel = ({ showSidebar, setShowSidebar }) => {
   );
 };
 
-const RightPanel = ({ handleWorkflowData }) => {
+const RightPanel = ({
+  handleWorkflowData,
+  isUpdated,
+  setIsUpdated,
+  setData,
+}) => {
   return (
     <Panel position="top-right">
-      <div className="right-panel-button" onClick={handleWorkflowData}>
+      {isUpdated && <UpdateBadge />}
+      <div
+        className="right-panel-button"
+        onClick={() => {
+          handleWorkflowData();
+          setIsUpdated(false);
+          setData((prev) => ({ ...prev, status: false }));
+        }}
+      >
         <RiSaveLine />
         <p>Save</p>
       </div>
     </Panel>
+  );
+};
+
+const UpdateBadge = () => {
+  return (
+    <div
+      style={{ position: "absolute", left: "5px", top: "5px", zIndex: "10" }}
+    >
+      <BsFillCircleFill color="cornflowerblue" />
+    </div>
   );
 };

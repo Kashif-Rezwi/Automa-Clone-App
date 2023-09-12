@@ -1,5 +1,5 @@
 import { memo, useCallback, useContext, useState } from "react";
-import "./customnode.css";
+import "./customNode.css";
 import { Handle, useReactFlow } from "reactflow";
 import { BiPencil } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
@@ -8,7 +8,13 @@ import getIcons from "../../../utils/getIcons";
 import { AppContext } from "../../../Context/AppContext";
 
 const CustomNode = ({ id }) => {
-  const { setData, setShowSidebar, reactFlowInstance } = useContext(AppContext);
+  const {
+    setData,
+    setShowSidebar,
+    reactFlowInstance,
+    setShowDrawer,
+    setIsUpdated,
+  } = useContext(AppContext);
   const [isVisible, setIsVisible] = useState(false);
   const { setNodes, getNodes } = useReactFlow();
 
@@ -56,7 +62,12 @@ const CustomNode = ({ id }) => {
       >
         <p>{id}</p>
         <div>
-          <AiOutlineDelete onClick={deleteNode} />
+          <AiOutlineDelete
+            onClick={() => {
+              deleteNode();
+              setIsUpdated(true);
+            }}
+          />
           <BiPencil
             onClick={() => {
               setData((prev) => ({
@@ -69,6 +80,7 @@ const CustomNode = ({ id }) => {
               }));
 
               setShowSidebar(true);
+              setShowDrawer((state) => !state);
             }}
           />
         </div>

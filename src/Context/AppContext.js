@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useResizeDetector } from "react-resize-detector";
 
 export const AppContext = createContext();
@@ -6,9 +6,16 @@ export const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const [data, setData] = useState({ status: false });
   const [showSidebar, setShowSidebar] = useState(true);
+  const [showDrawer, setShowDrawer] = useState(false);
   const { width, ref } = useResizeDetector();
+  const [nodesUpdated, setNodesUpdated] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
+
+  useEffect(() => {
+    console.log({ isUpdated });
+  }, [isUpdated]);
 
   return (
     <AppContext.Provider
@@ -21,6 +28,12 @@ export const AppContextProvider = ({ children }) => {
         ref,
         reactFlowInstance,
         setReactFlowInstance,
+        showDrawer,
+        setShowDrawer,
+        nodesUpdated,
+        setNodesUpdated,
+        isUpdated,
+        setIsUpdated,
       }}
     >
       {children}

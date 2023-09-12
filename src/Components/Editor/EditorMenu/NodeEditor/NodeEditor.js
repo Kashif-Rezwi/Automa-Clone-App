@@ -5,10 +5,19 @@ import { IoArrowBack } from "react-icons/io5";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { AppContext } from "../../../../Context/AppContext";
 import { useReactFlow } from "reactflow";
+import { parse } from "flatted";
 
 function NodeEditor() {
-  const { setNodes, getNodes } = useReactFlow();
-  const { data: currentNode, setData } = useContext(AppContext);
+  const { setNodes, getNodes, getEdges } = useReactFlow();
+  const {
+    data: currentNode,
+    setData,
+    width,
+    setIsUpdated,
+    isUpdated,
+  } = useContext(AppContext);
+  const { data } = currentNode;
+  const { label, description, interval, url, screenshot, cssSelecter } = data;
 
   const updateEditorNode = useCallback((key, value, id) => {
     setNodes((nodes) =>
@@ -32,12 +41,42 @@ function NodeEditor() {
     updateEditorNode(key, value, id);
   };
 
+  useEffect(() => {
+    try {
+      const workflowData = parse(localStorage.getItem("workflowData"));
+      if (workflowData?.nodes?.length > 0) {
+        const { nodes, edges } = workflowData;
+        const storedNode = nodes?.filter((node) => node.id === currentNode.id);
+        const allNodes = getNodes();
+        const allEdges = getEdges();
+
+        if (nodes.length !== allNodes.length) {
+          setIsUpdated(true);
+        } else if (edges.length !== allEdges.length) {
+          setIsUpdated(true);
+        } else if (
+          storedNode[0]?.data?.description !== description ||
+          storedNode[0]?.data?.interval !== interval ||
+          storedNode[0]?.data?.url !== url ||
+          storedNode[0]?.data?.screenshot !== screenshot ||
+          storedNode[0]?.data?.cssSelecter !== cssSelecter
+        ) {
+          setIsUpdated(true);
+        } else {
+          setIsUpdated(false);
+        }
+      }
+    } catch (error) {
+      console.log({ error });
+    }
+  }, [description, interval, url, screenshot, cssSelecter, isUpdated]);
+
   return (
     <>
-      <div className="node-navigate">
+      <div className="node-navigate" style={{ width: width <= 815 && "250px" }}>
         <div onClick={() => setData((prev) => ({ ...prev, status: false }))}>
           <IoArrowBack />
-          <p>{currentNode?.data?.label}</p>
+          <p>{label}</p>
         </div>
         <AiOutlineInfoCircle />
       </div>
@@ -48,37 +87,37 @@ function NodeEditor() {
           placeholder="Description"
           multiline
           rows={2}
-          value={currentNode?.data?.description}
+          value={description}
           onChange={handleChange}
         />
 
-        {currentNode?.data?.label === "Trigger" && (
+        {label === "Trigger" && (
           <TextField
             className="interval"
             name="interval"
             placeholder="Interval (in minutes)"
-            value={currentNode?.data?.interval}
+            value={interval}
             onChange={handleChange}
           />
         )}
 
-        {currentNode?.data?.label === "New Window" && (
+        {label === "New Window" && (
           <TextField
             className="url"
             name="url"
             placeholder="URL"
-            value={currentNode?.data?.url}
+            value={url}
             onChange={handleChange}
           />
         )}
 
-        {currentNode?.data?.label === "Take Screenshot" && (
+        {label === "Take Screenshot" && (
           <div className="screenshot-div">
             <label>Take a screenshot of</label>
             <Select
               className="screenshot"
               name="screenshot"
-              value={currentNode?.data?.screenshot}
+              value={screenshot}
               onChange={handleChange}
             >
               <MenuItem value={"A page"}>A page</MenuItem>
@@ -88,14 +127,14 @@ function NodeEditor() {
           </div>
         )}
 
-        {(currentNode?.data?.label === "Take Screenshot" ||
-          currentNode?.data?.label === "Click Element" ||
-          currentNode?.data?.label === "Get Text") && (
+        {(label === "Take Screenshot" ||
+          label === "Click Element" ||
+          label === "Get Text") && (
           <TextField
             className="css-selecter"
             name="cssSelecter"
             placeholder="CSS Selector"
-            value={currentNode?.data?.cssSelecter}
+            value={cssSelecter}
             onChange={handleChange}
           />
         )}

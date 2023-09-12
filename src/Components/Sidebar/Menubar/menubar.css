@@ -65,7 +65,7 @@
 .menu-wrapper > div:last-child > div > button {
   width: min-content;
   height: min-content;
-  padding: 0px;
+  padding: 0px 10px;
   margin-top: 15px;
 }
 

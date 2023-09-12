@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { GiEarthAmerica } from "react-icons/gi";
 import NodeComp from "./NodeComp";
 import { RiSearch2Line } from "react-icons/ri";
 import { BsFillCircleFill } from "react-icons/bs";
 import { IconButton } from "@mui/material";
-import { BiMinus, BiPlus } from "react-icons/bi";
+import { BiFullscreen, BiMinus, BiPlus } from "react-icons/bi";
+import { AppContext } from "../../../../Context/AppContext";
+import { PiSidebarSimpleFill } from "react-icons/pi";
 
 const nodes = [
   {
@@ -36,6 +38,8 @@ const nodes = [
 
 function Nodebar() {
   const [isVisible, setIsVisible] = useState(true);
+  const { setShowSidebar, setShowDrawer, showSidebar, showDrawer, width } =
+    useContext(AppContext);
 
   return (
     <>
@@ -43,6 +47,14 @@ function Nodebar() {
         <div>
           <GiEarthAmerica />
           <p>Testing</p>
+          {width <= 815 && (
+            <ScreenToggleButton
+              setShowSidebar={setShowSidebar}
+              setShowDrawer={setShowDrawer}
+              showSidebar={showSidebar}
+              showDrawer={showDrawer}
+            />
+          )}
         </div>
 
         <div>
@@ -71,3 +83,24 @@ function Nodebar() {
 }
 
 export default Nodebar;
+
+const ScreenToggleButton = ({
+  setShowSidebar,
+  setShowDrawer,
+  showSidebar,
+  showDrawer,
+}) => {
+  return (
+    <div className="screen-toggle-button">
+      <IconButton
+        disableTouchRipple
+        onClick={() => {
+          setShowSidebar(!showSidebar);
+          setShowDrawer(!showDrawer);
+        }}
+      >
+        {!showSidebar ? <PiSidebarSimpleFill /> : <BiFullscreen />}
+      </IconButton>
+    </div>
+  );
+};

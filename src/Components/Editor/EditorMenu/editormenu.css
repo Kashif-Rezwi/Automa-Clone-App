@@ -140,6 +140,37 @@
   height: 18px;
 }
 
+.screen-toggle-button {
+  width: min-content;
+  background-color: #27272a;
+  gap: 5px;
+  border-radius: 8px;
+  transition: 0.2s;
+  cursor: pointer;
+  position: relative;
+  right: -80px;
+}
+
+.screen-toggle-button {
+  justify-content: center;
+  display: flex;
+}
+
+.screen-toggle-button > button {
+  border-radius: 8px;
+  padding: 10.5px;
+}
+
+.screen-toggle-button > button:hover {
+  background-color: #313134;
+  transition: 0.2s;
+}
+
+.screen-toggle-button svg {
+  font-size: 25px;
+  color: white;
+}
+
 @media all and (max-width: 815px) {
   .editor-menu {
     display: none;
