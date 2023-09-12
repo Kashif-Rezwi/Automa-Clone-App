@@ -131,3 +131,8 @@ Follow these steps to clone the project and install its dependencies:
 
 
 ### Contribution
+| Contributors       |
+| --------------------------------------------- |
+| [Kashif Rezwi](https://github.com/Kashif-Rezwi)           |
+
+<p>This is an individual project built in a span of 4 days</p>
