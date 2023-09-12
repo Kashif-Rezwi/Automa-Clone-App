@@ -70,7 +70,62 @@ Follow these steps to clone the project and install its dependencies:
 
 ### Features
 
-<h3>Homepage</h3>
+<h4>1. Homepage</h4>
+<p>It is a homepage based project where the Sidebar and Graph functionalities are the main focus.</p>
 <img src="https://raw.githubusercontent.com/Kashif-Rezwi/Project-Screenshots/main/home.png" />
+
+<h4>2. Dragging node</h4>
+<p>Users can drag and drop elements from the sidebar.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/dragging-node.png" />
+
+<h4>Connecting nodes</h4>
+<p>Users can connect with different elements using Edge.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/connecting-nodes.png" />
+
+<h4>On hovering node options</h4>
+<p>On hovering any element/node in a graph user can see node id, delete button, and edit button</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onhover-node.png" />
+
+<h4>On editing a node</h4>
+<p>On clicking the edit button a sidebar opens and the user can edit the node.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onedit-node.png" />
+
+<h4>On saving nodes to localstorage</h4>
+<p>Users can save the flow data into localstorage, and once saved if the user refreshes the window no data will be lost. Whenever data changes it indicates with a blue dot over the save button to save your data.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onsave-node.png" />
+
+<h4>Right click on a node</h4>
+<p>On right-click node menu will appear, where the user can duplicate and delete that node.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onRightClickMenu-node.png" />
+
+<h4>Duplicate a node</h4>
+<p>Users can duplicate the node with a different id.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onDuplicate-node.png" />
+
+<h4>Right click on a edge</h4>
+<p>On right-click edge menu will appear, where the user can only delete that edge.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onRightClickMenu-edge.png" />
+
+<h4>Left click on a node</h4>
+<p>On left-click on a node, it will automatically pan and zoom over that node to the center of the viewport.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onClicking-node.png" />
+
+<h4>On click fitview</h4>
+<p>On clicking fitview it will automatically pan and zoom over the nodes to the center of the viewport.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onfitview-nodes.png" />
+
+<h4>Sidebar menu</h4>
+<p> The sidebar menu can be toggled with minus and plus buttons to hide and show menu options.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/onMinus-sidebar.png" />
+
+<h4>Sidebar menu Hide</h4>
+<p>The sidebar can be hidden with a sidebar button in the top-left corner of the graph.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/hide-sidebar.png" />
+
+<h3>Responsiveness</h3>
+<p>The UI is also responsive to Dekstop, tab and mobile screens.</p>
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/responsive-1.png" />
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/responsive-2.png" />
+<img src="https://github.com/Kashif-Rezwi/Project-Screenshots/blob/main/responsive-3.png" />
 
 ### Contribution
