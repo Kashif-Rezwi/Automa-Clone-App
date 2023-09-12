@@ -3,7 +3,7 @@
 ## Project Description
 This is a single-page frontend project that serves as a clone of Automa, a browser extension designed for automating various tasks. Whether it's simplifying form filling, streamlining repetitive actions, capturing screenshots, or extracting data from websites, this extension empowers users to customize their web automation experience to suit their needs. 
 
-## Live: [automa-clone.netlify.com](https://automa-clone.netlify.app/)
+## Live: [automa-clone.netlify.com](https://automa-clone.netlify.app/){:target="_blank" rel="noopener"}
 
 
 | [Table of Contents](#table-of-contents)       |
