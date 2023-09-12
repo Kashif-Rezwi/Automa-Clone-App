@@ -56,4 +56,15 @@ Follow these steps to clone the project and install its dependencies:
 
 ### Liabraries and Tools
 
+| Library                                                                      | Description                                                                                                                           |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| [React](https://reactjs.org/)                                                | A JavaScript library for building user interfaces.                                                                                    |
+| [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)                    | The standard markup language for creating web pages.                                                                                  |
+| [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)                      | A stylesheet language used for styling web documents.                                                                                 |
+| [React Flow](https://reactflow.dev/)                                         | A library for building interactive node-based graph interfaces.                                                                       |
+| [React Icons](https://react-icons.github.io/react-icons/)                    | Easily incorporate icons from popular packs into React applications                                                                   |
+| [Material-UI (MUI) Library](https://mui.com/material-ui/getting-started/)    | Material UI is a library of React UI components that implements Google's Material Design.                                             |
+| [Short-Unique-ID](https://www.npmjs.com/package/short-unique-id)             | Generates concise and unique identifiers (IDs) suitable for space-efficient applications.                                             |
+| [React-Resize-Detector](https://www.npmjs.com/package/react-resize-detector) | Provides the ability to detect and respond to changes in the size of DOM elements in React applications, aiding in responsive design. |
+
 ### Features
