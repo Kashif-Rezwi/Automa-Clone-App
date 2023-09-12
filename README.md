@@ -7,10 +7,8 @@ Automa is a browser extension for browser automation. From auto-fill forms, doin
 ### Table of Contents
 
 1. [Getting Started](#getting-started)
-   - [Prerequisites](#prerequisites)
-   - [Installation](#installation)
-2. [Usage](#usage)
-3. [Libraries Used](#libraries-used)
+2. [Prerequisites](#prerequisites)
+3. [Liabraries and Tools](#liabraries-and-tools)
 4. [Contributing](#contributing)
 
 ## Getting Started
@@ -24,7 +22,7 @@ List any software, tools, or dependencies that need to be installed before setti
 - Node.js (vXX.XX.X)
 - npm (vX.X.X)
 
-### Installation
+### Liabraries and Tools
 
 1. Clone the repository to your local machine using Git:
 
