@@ -240,9 +240,11 @@ const RightPanel = memo(
         <div
           className="right-panel-button"
           onClick={() => {
-            handleWorkflowData();
-            setIsUpdated(false);
-            setData((prev) => ({ ...prev, status: !prev.status }));
+            if (isUpdated) {
+              handleWorkflowData();
+              setIsUpdated(false);
+              setData((prev) => ({ ...prev, status: false }));
+            }
           }}
         >
           <RiSaveLine />
