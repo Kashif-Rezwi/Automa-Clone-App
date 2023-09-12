@@ -23,7 +23,6 @@ const CustomNode = ({ id }) => {
   const { label, nodeType, description, Icon, color, ref } = data;
 
   const centerSelectedNode = (elementId, reactFlowInstance) => {
-    console.log({ reactFlowInstance });
     if (reactFlowInstance) {
       const element = reactFlowInstance?.getNode(elementId);
 

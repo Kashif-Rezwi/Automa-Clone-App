@@ -5,6 +5,7 @@ import React, {
   useMemo,
   useEffect,
   useContext,
+  memo,
 } from "react";
 import ReactFlow, {
   addEdge,
@@ -91,7 +92,7 @@ function Editor() {
           description: "",
           interval: "",
           url: "",
-          screenshot: "A page",
+          screenshot: "none",
           cssSelecter: "",
           Icon,
           color,
@@ -149,7 +150,6 @@ function Editor() {
         const { nodes, edges } = workflowData;
         setNodes(nodes);
         setEdges(edges);
-        console.log({ workflowData });
       }
     } catch (error) {}
   }, []);
@@ -199,54 +199,48 @@ function Editor() {
   );
 }
 
-export default Editor;
+export default memo(Editor);
 
-const LeftPanel = ({
-  showSidebar,
-  setShowSidebar,
-  showDrawer,
-  setShowDrawer,
-}) => {
-  return (
-    <Panel position="top-left">
-      <div className="left-panel-button">
-        <IconButton
-          disableTouchRipple
+const LeftPanel = memo(
+  ({ showSidebar, setShowSidebar, showDrawer, setShowDrawer }) => {
+    return (
+      <Panel position="top-left">
+        <div className="left-panel-button">
+          <IconButton
+            disableTouchRipple
+            onClick={() => {
+              setShowSidebar(!showSidebar);
+              setShowDrawer(!showDrawer);
+            }}
+          >
+            {!showSidebar ? <PiSidebarSimpleFill /> : <BiFullscreen />}
+          </IconButton>
+        </div>
+      </Panel>
+    );
+  }
+);
+
+const RightPanel = memo(
+  ({ handleWorkflowData, isUpdated, setIsUpdated, setData }) => {
+    return (
+      <Panel position="top-right">
+        {isUpdated && <UpdateBadge />}
+        <div
+          className="right-panel-button"
           onClick={() => {
-            setShowSidebar(!showSidebar);
-            setShowDrawer(!showDrawer);
+            handleWorkflowData();
+            setIsUpdated(false);
+            setData((prev) => ({ ...prev, status: false }));
           }}
         >
-          {!showSidebar ? <PiSidebarSimpleFill /> : <BiFullscreen />}
-        </IconButton>
-      </div>
-    </Panel>
-  );
-};
-
-const RightPanel = ({
-  handleWorkflowData,
-  isUpdated,
-  setIsUpdated,
-  setData,
-}) => {
-  return (
-    <Panel position="top-right">
-      {isUpdated && <UpdateBadge />}
-      <div
-        className="right-panel-button"
-        onClick={() => {
-          handleWorkflowData();
-          setIsUpdated(false);
-          setData((prev) => ({ ...prev, status: false }));
-        }}
-      >
-        <RiSaveLine />
-        <p>Save</p>
-      </div>
-    </Panel>
-  );
-};
+          <RiSaveLine />
+          <p>Save</p>
+        </div>
+      </Panel>
+    );
+  }
+);
 
 const UpdateBadge = () => {
   return (

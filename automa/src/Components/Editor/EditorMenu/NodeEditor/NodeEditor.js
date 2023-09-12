@@ -1,5 +1,11 @@
 import { MenuItem, Select, TextField } from "@mui/material";
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, {
+  memo,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import "./nodeEditor.css";
 import { IoArrowBack } from "react-icons/io5";
 import { AiOutlineInfoCircle } from "react-icons/ai";
@@ -19,26 +25,42 @@ function NodeEditor() {
   const { data } = currentNode;
   const { label, description, interval, url, screenshot, cssSelecter } = data;
 
-  const updateEditorNode = useCallback((key, value, id) => {
+  const updateEditorNode = (key, value, id) => {
     setNodes((nodes) =>
       nodes.map((node) => {
         if (node.id === id) {
-          const updatedData = { ...node.data, [key]: value };
-          return { ...node, data: updatedData };
+          if (key === "screenshot" && value === "none") {
+            const updatedData = { ...node.data, [key]: value, cssSelecter: "" };
+            return { ...node, data: updatedData };
+          } else {
+            const updatedData = { ...node.data, [key]: value };
+            return { ...node, data: updatedData };
+          }
         }
         return node;
       })
     );
-  }, []);
+  };
 
   const handleChange = (e) => {
     const { name: key, value } = e.target;
 
     const { id, data } = currentNode;
-    const updatedData = { ...data, [key]: value };
-    setData((prevData) => ({ ...prevData, data: updatedData }));
 
-    updateEditorNode(key, value, id);
+    if (key === "interval" && isNaN(Number(value))) {
+      // If the key is "interval" and the input is not a number, do nothing.
+      return;
+    } else {
+      if (key === "screenshot" && value === "none") {
+        const updatedData = { ...data, [key]: value, cssSelecter: "" };
+        setData((prevData) => ({ ...prevData, data: updatedData }));
+      } else {
+        const updatedData = { ...data, [key]: value };
+        setData((prevData) => ({ ...prevData, data: updatedData }));
+      }
+
+      updateEditorNode(key, value, id);
+    }
   };
 
   useEffect(() => {
@@ -120,6 +142,7 @@ function NodeEditor() {
               value={screenshot}
               onChange={handleChange}
             >
+              <MenuItem value={"none"}>none</MenuItem>
               <MenuItem value={"A page"}>A page</MenuItem>
               <MenuItem value={"A full page"}>A full page</MenuItem>
               <MenuItem value={"An element"}>An element</MenuItem>
@@ -127,7 +150,7 @@ function NodeEditor() {
           </div>
         )}
 
-        {(label === "Take Screenshot" ||
+        {((label === "Take Screenshot" && screenshot !== "none") ||
           label === "Click Element" ||
           label === "Get Text") && (
           <TextField
@@ -143,4 +166,4 @@ function NodeEditor() {
   );
 }
 
-export default NodeEditor;
+export default memo(NodeEditor);

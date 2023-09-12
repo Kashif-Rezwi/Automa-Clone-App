@@ -23,7 +23,6 @@ function ContextMenu({ id, top, left, right, bottom, ...props }) {
         selected: false,
       }))
     );
-    console.log({ updatedNodes });
     addNodes({ ...node, selected: true, id: uniqueId(7), position });
   }, [id, getNode, addNodes]);
 

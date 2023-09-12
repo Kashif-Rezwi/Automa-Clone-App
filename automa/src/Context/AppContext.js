@@ -13,10 +13,6 @@ export const AppContextProvider = ({ children }) => {
 
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
-  useEffect(() => {
-    console.log({ isUpdated });
-  }, [isUpdated]);
-
   return (
     <AppContext.Provider
       value={{
