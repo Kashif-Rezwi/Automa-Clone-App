@@ -99,7 +99,7 @@ const ScreenToggleButton = ({
           setShowDrawer(!showDrawer);
         }}
       >
-        {!showSidebar ? <PiSidebarSimpleFill /> : <BiFullscreen />}
+        {showSidebar ? <PiSidebarSimpleFill /> : <BiFullscreen />}
       </IconButton>
     </div>
   );

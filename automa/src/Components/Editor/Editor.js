@@ -179,6 +179,7 @@ function Editor() {
           setShowSidebar={setShowSidebar}
           showDrawer={showDrawer}
           setShowDrawer={setShowDrawer}
+          width={width}
         />
         <RightPanel
           handleWorkflowData={handleWorkflowData}
@@ -202,7 +203,7 @@ function Editor() {
 export default memo(Editor);
 
 const LeftPanel = memo(
-  ({ showSidebar, setShowSidebar, showDrawer, setShowDrawer }) => {
+  ({ showSidebar, setShowSidebar, showDrawer, setShowDrawer, width }) => {
     return (
       <Panel position="top-left">
         <div className="left-panel-button">
@@ -213,7 +214,17 @@ const LeftPanel = memo(
               setShowDrawer(!showDrawer);
             }}
           >
-            {!showSidebar ? <PiSidebarSimpleFill /> : <BiFullscreen />}
+            {width > 815 ? (
+              !showSidebar ? (
+                <PiSidebarSimpleFill />
+              ) : (
+                <BiFullscreen />
+              )
+            ) : showSidebar ? (
+              <PiSidebarSimpleFill />
+            ) : (
+              <BiFullscreen />
+            )}
           </IconButton>
         </div>
       </Panel>
@@ -231,7 +242,7 @@ const RightPanel = memo(
           onClick={() => {
             handleWorkflowData();
             setIsUpdated(false);
-            setData((prev) => ({ ...prev, status: false }));
+            setData((prev) => ({ ...prev, status: !prev.status }));
           }}
         >
           <RiSaveLine />
