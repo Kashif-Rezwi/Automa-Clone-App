@@ -1,8 +1,7 @@
 # Automa-Clone-App
 
 ## Project Description
-
-Automa is a browser extension for browser automation. From auto-fill forms, doing a repetitive task, and taking a screenshot, to scraping data from the website, it's up to users what they want to do with this extension.
+This is a single-page frontend project that serves as a clone of Automa, a browser extension designed for automating various tasks. Whether it's simplifying form filling, streamlining repetitive actions, capturing screenshots, or extracting data from websites, this extension empowers users to customize their web automation experience to suit their needs. 
 
 | [Table of Contents](#table-of-contents)       |
 | --------------------------------------------- |
