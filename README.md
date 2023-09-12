@@ -46,7 +46,6 @@ Follow these steps to clone the project and install its dependencies:
    npm install
    ```
 
-   Running the Front-end
    Once you have installed the project and its dependencies, you can run the front-end part using the following command:
 
    ```bash
