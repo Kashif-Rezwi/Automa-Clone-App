@@ -70,4 +70,7 @@ Follow these steps to clone the project and install its dependencies:
 
 ### Features
 
+<h3>Homepage</h3>
+<img src="https://raw.githubusercontent.com/Kashif-Rezwi/Project-Screenshots/main/home.png" />
+
 ### Contribution
