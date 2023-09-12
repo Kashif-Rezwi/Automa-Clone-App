@@ -57,16 +57,16 @@ Follow these steps to clone the project and install its dependencies:
 
 ### Liabraries and Tools
 
-| Library                                                                                         | Description                                                                                                                           |
-| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| [React](https://reactjs.org/){:target="\_blank"}                                                | A JavaScript library for building user interfaces.                                                                                    |
-| [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML){:target="\_blank"}                    | The standard markup language for creating web pages.                                                                                  |
-| [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS){:target="\_blank"}                      | A stylesheet language used for styling web documents.                                                                                 |
-| [React Flow](https://reactflow.dev/){:target="\_blank"}                                         | A library for building interactive node-based graph interfaces.                                                                       |
-| [React Icons](https://react-icons.github.io/react-icons/){:target="\_blank"}                    | Easily incorporate icons from popular packs into React applications                                                                   |
-| [Material-UI (MUI) Library](https://mui.com/material-ui/getting-started/){:target="\_blank"}    | Material UI is a library of React UI components that implements Google's Material Design.                                             |
-| [Short-Unique-ID](https://www.npmjs.com/package/short-unique-id){:target="\_blank"}             | Generates concise and unique identifiers (IDs) suitable for space-efficient applications.                                             |
-| [React-Resize-Detector](https://www.npmjs.com/package/react-resize-detector){:target="\_blank"} | Provides the ability to detect and respond to changes in the size of DOM elements in React applications, aiding in responsive design. |
+| Library                                                                                        | Description                                                                                                                           |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| [React](https://reactjs.org/){target="\_blank"}                                                | A JavaScript library for building user interfaces.                                                                                    |
+| [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML){target="\_blank"}                    | The standard markup language for creating web pages.                                                                                  |
+| [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS){target="\_blank"}                      | A stylesheet language used for styling web documents.                                                                                 |
+| [React Flow](https://reactflow.dev/){target="\_blank"}                                         | A library for building interactive node-based graph interfaces.                                                                       |
+| [React Icons](https://react-icons.github.io/react-icons/){target="\_blank"}                    | Easily incorporate icons from popular packs into React applications                                                                   |
+| [Material-UI (MUI) Library](https://mui.com/material-ui/getting-started/){target="\_blank"}    | Material UI is a library of React UI components that implements Google's Material Design.                                             |
+| [Short-Unique-ID](https://www.npmjs.com/package/short-unique-id){target="\_blank"}             | Generates concise and unique identifiers (IDs) suitable for space-efficient applications.                                             |
+| [React-Resize-Detector](https://www.npmjs.com/package/react-resize-detector){target="\_blank"} | Provides the ability to detect and respond to changes in the size of DOM elements in React applications, aiding in responsive design. |
 
 ### Features
 
