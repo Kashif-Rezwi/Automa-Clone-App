@@ -6,11 +6,11 @@ Automa is a browser extension for browser automation. From auto-fill forms, doin
 
 ### Table of Contents
 
-1. [Getting Started](#getting-started)
-2. [Prerequisites](#prerequisites)
-3. [Instalation](#instalation)
-4. [Liabraries and Tools](#liabraries-and-tools)
-5. [Features](#features)
+|[Getting Started](#getting-started)|
+|[Prerequisites](#prerequisites)|
+|[Instalation](#instalation)|
+|[Liabraries and Tools](#liabraries-and-tools)|
+|[Features](#features)|
 
 ## Getting Started
 
